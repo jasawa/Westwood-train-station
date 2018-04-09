@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Westwood Train Station schedule</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
+  </head>
+  <body>
+
+    <div class="jumbotron" id="jumbo">
+        <h1 class="display-4 text-center">Westwood Train Station</h1>
+    </div>
+
+
+    <!-- Container for Current Train Schedule -->  
+    <div class="container mb-5" id="trainScheduleTable">
+        <div>
+            <h4 class="p-3 mt-5 mb-0 bg-dark text-white">Current Train Schedule</h4>
+        </div>
+        <div class="pl-4 pr-4 pt-3 pb-3 border border-dark">
+            <table class="table table-hover" id="train-table">
+                <thead>
+                    <tr>
+                        <th>Train Name</th>
+                        <th>Destination</th>
+                        <th>Frequency (min.)</th>
+                        <th>Next Arrival</th>
+                        <th>Minutes Away</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+
+            </table>
+
+            
+        </div>
+    </div>
+
+    
+    <!-- Container for Add Train Input -->
+    <div class="container bg-white" id="input-container">
+        <div>
+            <h4 class="p-3 mt-3 mb-0 bg-dark text-white">Add Train</h4>
+        </div>
+        <form class="pl-4 pr-4 pt-3 pb-3 border border-dark">
+            <div class="form-group">
+            <label for="newTrain">Train Name</label>
+            <input type="text" class="form-control" id="newTrain" placeholder="ex. New York Express">
+            </div>
+            <div class="form-group">
+            <label for="newDestination">Destination</label>
+            <input type="text" class="form-control" id="newDestination" placeholder="ex. New York City">
+            </div>
+            <div class="form-group">
+                <label for="newFirstTrainTime">First Train Time (HH:mm  - use military time please)</label>
+                <input type="text" class="form-control" id="newFirstTrainTime" placeholder="00:00">
+            </div>
+            <div class="form-group">
+                <label for="newFrequency">Frequency (min.)</label>
+                <input type="text" class="form-control" id="newFrequency" placeholder="720">
+            </div>
+
+            <!-- Below are two different ways to make a button -->
+            <!--<a class="btn btn-secondary" href="#" role="button">Search</a>-->
+            <button type="button" class="btn btn-secondary">Submit</button>
+
+        </form>
+    </div>
+
+
+<!-- Connecting to jQuery and Bootstrap 4 suggested scripts-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- Connecting to javascript  -->
+<script src="assets/javascript/app.js"></script>
+</body>
+</html>
