@@ -17,7 +17,7 @@
 
 
 // When button is clicked then the user's train input is transferred to the variables
-$("#newTrain").on("click", function(event) {
+$("#addTrainButton").on("click", function(event) {
     event.preventDefault();
     var trainName = $("#new-train-input").val().trim();
     var destination = $("#new-destination-input").val().trim();
@@ -32,8 +32,16 @@ $("#newTrain").on("click", function(event) {
         frequency: frequency
     };
 
-    // upload train data to firebase
+    console.log(train);
+
+    // Upload train data to firebase
     database.ref().push(train);
-})
+
+    // Clear all text input boxes
+    $("#new-train-input").val("");
+    $("#new-destination-input").val("");
+    $("#new-1st-train-time-input").val("");
+    $("#new-frequency-input").val("");
+});
 
 
