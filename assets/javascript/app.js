@@ -13,6 +13,8 @@
 // variable that references the database
   var database = firebase.database();
 
+
+
 // initial variables
 
 
@@ -50,20 +52,34 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
     // store info from firebase into variables
     var train = childSnapshot.val().trainName;
-    var trainDestination = childSnapdot.val().destination;
+    var trainDestination = childSnapshot.val().destination;
     var trainFirstTime = childSnapshot.val().firstTime;
     var trainFrequency = childSnapshot.val().frequency;
 
-    // calculate Next Arrival for Current Train Schedule
-    
 
+    // calculate Minutes Away and Next Arrival for Current Train Schedule:
+    // get current time from momentJS
+    var currentTime = moment();
+        console.log("This is the current time " + moment(currentTime).format("hh:mm"));
+    // trainFirstTime converted so make sure it comes before current time by pushing it back one year
+    var convertedFirstTime = moment(trainFirstTime, "hh:mm").subtract(1, "years");
+        console.log(convertedFirstTime);
+    // subtract current time from converted train first time, make the result in minutes -- so approximately 1 year and additional minutes
+    // Note: there are usually 525,600 minutes in a year
+    var timeDiff = moment().diff(moment(convertedFirstTime), "minutes");
+    // divide timeDiff by the frequency of the train, discard the integer, the remainder is the number of minutes that have passed since the last train "left the station"
+    var timeSinceLastTrain = timeDiff % trainFrequency;
+        console.log("Minutes since last train left " + timeSinceLastTrain);
+    // Minutes until next train is frequency minus the number of minutes since last train left
+    var minutesAway = trainFrequency - timeSinceLastTrain;
+        console.log("Minutes until next train arrives " + minutesAway);
+    // The next train will arrive  = current time + number of minutes for next train
+    var nextArrival = moment().add(minutesAway, "minutes");
+        console.log("the next arrival is" + nextArrival);
 
-    // calculate Minutes Away for Current Train Schedule
 
 
 })
 
-
-// Displays a new row in the "Current Train Schedule" when any user adds a train
 
 
