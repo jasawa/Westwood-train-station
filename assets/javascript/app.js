@@ -50,7 +50,7 @@ $("#addTrainButton").on("click", function(event) {
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     console.log("This is the info from firebase " + childSnapshot.val());
 
-    // store info from firebase into variables
+    // receive info from firebase and store into variables
     var train = childSnapshot.val().trainName;
     var trainDestination = childSnapshot.val().destination;
     var trainFirstTime = childSnapshot.val().firstTime;
@@ -75,9 +75,12 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
         console.log("Minutes until next train arrives " + minutesAway);
     // The next train will arrive  = current time + number of minutes for next train
     var nextArrival = moment().add(minutesAway, "minutes");
-        console.log("the next arrival is" + nextArrival);
+        console.log("the next arrival is " + nextArrival);
+        // make nextArrival in hh:mm format
+    var nextArrivalFormatted = moment(nextArrival).format("hh:mm A");
 
-
+    // Add each train's info into the Current Train Schedule table
+    $("#train-table > tbody").append("<tr><td>" + train + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + nextArrivalFormatted + "</td><td>" + minutesAway + "</td><tr>");
 
 })
 
