@@ -12,11 +12,7 @@
 
 // variable that references the database
   var database = firebase.database();
-
-
-
-// initial variables
-
+  
 
 // When button is clicked then the user's train input is transferred to the variables
 $("#addTrainButton").on("click", function(event) {
